@@ -11,6 +11,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public const NUMBER_TYPES = [
+        'NIS',
+        'NIP',
+        'NIK',
+    ];
+
     protected $fillable = [
         'name',
         'number',

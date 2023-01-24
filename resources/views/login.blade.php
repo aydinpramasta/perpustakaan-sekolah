@@ -2,12 +2,18 @@
     <h1 class="fw-bold">Perpustakaan</h1>
     <h3>Login</h3>
 
-    <form action="#"
+    <form action="{{ route('login') }}" method="POST"
         class="w-100 d-flex flex-column justify-content-center align-items-center gap-4 my-4 px-4 text-start"
         style="max-width: 500px">
+        @csrf
+        @method('POST')
+
         <div class="w-100">
             <label for="number" class="form-label">Nomor</label>
-            <input type="number" name="number" class="form-control" id="number" />
+            <input type="number" name="number" class="form-control" id="number" value="{{ old('number') }}" />
+            @error('number')
+                <small class="fs-6 text-danger">{{ $message }}</small>
+            @enderror
         </div>
 
         <div class="w-100">
