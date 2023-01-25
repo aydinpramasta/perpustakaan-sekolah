@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class GuestLayout extends Component
+class AppLayout extends Component
 {
     public function __construct(public ?string $title = null)
     {
@@ -12,6 +12,6 @@ class GuestLayout extends Component
 
     public function render()
     {
-        return view('layouts.guest');
+        return view('layouts.app');
     }
 }
