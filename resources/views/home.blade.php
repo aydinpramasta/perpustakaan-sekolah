@@ -20,101 +20,21 @@
 
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Dipinjam
-                                <span class="fw-bold text-decoration-underline">10</span>
-                                kali</span>
+                @foreach ($popularBooks as $popularBook)
+                    <a href="#" class="col text-dark text-decoration-none">
+                        <div class="card">
+                            <img src="{{ filter_var($popularBook->cover, FILTER_VALIDATE_URL) ? $popularBook->cover : asset('storage/' . $popularBook->cover) }}"
+                                alt="{{ $popularBook->title }}" class="card-img-top">
+                            <div class="card-body text-center">
+                                <h3 class="card-text fs-5 fw-bold mb-5">{{ $popularBook->title }}</h3>
+                                <span class="fs-6">Dipinjam
+                                    <span
+                                        class="fw-bold text-decoration-underline">{{ $popularBook->borrows_count }}</span>
+                                    kali</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
-
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Dipinjam
-                                <span class="fw-bold text-decoration-underline">10</span>
-                                kali</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Dipinjam
-                                <span class="fw-bold text-decoration-underline">10</span>
-                                kali</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Dipinjam
-                                <span class="fw-bold text-decoration-underline">10</span>
-                                kali</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Dipinjam
-                                <span class="fw-bold text-decoration-underline">10</span>
-                                kali</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Dipinjam
-                                <span class="fw-bold text-decoration-underline">10</span>
-                                kali</span>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>
@@ -124,101 +44,21 @@
 
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Terbit
-                                <span class="fw-bold text-decoration-underline">kemarin</span>
-                            </span>
+                @foreach ($newestBooks as $newestBook)
+                    <a href="#" class="col text-dark text-decoration-none">
+                        <div class="card">
+                            <img src="{{ filter_var($newestBook->cover, FILTER_VALIDATE_URL) ? $newestBook->cover : asset('storage/' . $newestBook->cover) }}"
+                                alt="{{ $newestBook->title }}" class="card-img-top">
+                            <div class="card-body text-center">
+                                <h3 class="card-text fs-5 fw-bold mb-5">{{ $newestBook->title }}</h3>
+                                <span class="fs-6">Terbit
+                                    <span
+                                        class="fw-bold text-decoration-underline">{{ $newestBook->created_at->locale('id_ID')->diffForHumans() }}</span>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                </a>
-
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Terbit
-                                <span class="fw-bold text-decoration-underline">kemarin</span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Terbit
-                                <span class="fw-bold text-decoration-underline">kemarin</span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Terbit
-                                <span class="fw-bold text-decoration-underline">kemarin</span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Terbit
-                                <span class="fw-bold text-decoration-underline">kemarin</span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="col text-dark text-decoration-none">
-                    <div class="card">
-                        <svg class="card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect width="100%" height="100%" fill="#55595c" />
-                        </svg>
-                        <div class="card-body text-center">
-                            <h3 class="card-text fs-5 fw-bold mb-5">Judul</h3>
-                            <span class="fs-6">Terbit
-                                <span class="fw-bold text-decoration-underline">kemarin</span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>
