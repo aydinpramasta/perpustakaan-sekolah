@@ -11,10 +11,21 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public const ROLES = [
+        'Admin' => 'Admin',
+        'Pustakawan' => 'Pustakawan',
+        'Member' => 'Member',
+    ];
+
     public const NUMBER_TYPES = [
         'NIS',
         'NIP',
         'NIK',
+    ];
+
+    public const GENDERS = [
+        'Man' => 'Man',
+        'Woman' => 'Woman',
     ];
 
     protected $fillable = [

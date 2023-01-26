@@ -9,6 +9,11 @@ class Book extends Model
 {
     use HasFactory;
 
+    public const STATUSES = [
+        'Tersedia',
+        'Dipinjam',
+    ];
+
     protected $fillable = [
         'title',
         'synopsis',
@@ -20,4 +25,9 @@ class Book extends Model
         'amount',
         'status',
     ];
+
+    public function borrows()
+    {
+        return $this->hasMany(Borrow::class);
+    }
 }
