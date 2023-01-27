@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="d-flex flex-column justify-content-center align-items-center text-center mt-5 py-5 px-4">
         <h1 class="mt-4 fs-2 fw-bold">Selamat Datang di Perpustakaan Online!</h1>
-        <form action="#" class="position-relative d-flex w-100 my-4" style="max-width: 630px">
+        <form action="{{ route('search') }}" method="GET" class="position-relative d-flex w-100 my-4" style="max-width: 630px">
             <input type="text" name="search" class="form-control" placeholder="Cari buku..." />
 
             <button type="submit" class="btn btn-link" style="position: absolute; bottom: 4px; right: 1px">
