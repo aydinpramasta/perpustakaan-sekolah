@@ -29,6 +29,17 @@ class DatabaseSeeder extends Seeder
                 'gender' => User::GENDERS['Man'],
             ]);
 
+            User::factory()->create([
+                'name' => 'Pustakawan',
+                'number' => '9999',
+                'number_type' => 'NIS',
+                'role' => User::ROLES['Librarian'],
+                'password' => Hash::make('password'),
+                'address' => 'America',
+                'telephone' => '627878787878',
+                'gender' => User::GENDERS['Woman'],
+            ]);
+
             $member = User::factory()->create([
                 'name' => 'Member',
                 'number' => '9696',
