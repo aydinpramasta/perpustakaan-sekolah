@@ -23,7 +23,7 @@
                 @foreach ($popularBooks as $popularBook)
                     <a href="#" class="col text-dark text-decoration-none">
                         <div class="card">
-                            <img src="{{ filter_var($popularBook->cover, FILTER_VALIDATE_URL) ? $popularBook->cover : asset('storage/' . $popularBook->cover) }}"
+                            <img src="{{ isset($popularBook->cover) ? asset('storage/' . $popularBook->cover) : asset('storage/placeholder.png') }}"
                                 alt="{{ $popularBook->title }}" class="card-img-top">
                             <div class="card-body text-center">
                                 <h3 class="card-text fs-5 fw-bold mb-5">{{ $popularBook->title }}</h3>
@@ -47,7 +47,7 @@
                 @foreach ($newestBooks as $newestBook)
                     <a href="#" class="col text-dark text-decoration-none">
                         <div class="card">
-                            <img src="{{ filter_var($newestBook->cover, FILTER_VALIDATE_URL) ? $newestBook->cover : asset('storage/' . $newestBook->cover) }}"
+                            <img src="{{ isset($newestBook->cover) ? asset('storage/' . $newestBook->cover) : asset('storage/placeholder.png') }}"
                                 alt="{{ $newestBook->title }}" class="card-img-top">
                             <div class="card-body text-center">
                                 <h3 class="card-text fs-5 fw-bold mb-5">{{ $newestBook->title }}</h3>

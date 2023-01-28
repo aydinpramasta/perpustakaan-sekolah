@@ -22,7 +22,7 @@ class BookFactory extends Factory
             'publisher' => fake()->company(),
             'writer' => fake()->name(),
             'publish_year' => fake()->year(),
-            'cover' => 'https://source.unsplash.com/random/720x1280',
+            'cover' => null,
             'category' => 'Random',
             'amount' => 5,
             'status' => 'Tersedia',
