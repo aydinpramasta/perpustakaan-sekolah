@@ -21,7 +21,7 @@
             @forelse ($books as $book)
                 <a href="#" class="col text-dark text-decoration-none">
                     <div class="card">
-                        <img src="{{ filter_var($book->cover, FILTER_VALIDATE_URL) ? $book->cover : asset('storage/' . $book->cover) }}"
+                        <img src="{{ isset($book->cover) ? asset('storage/' . $book->cover) : asset('storage/placeholder.png') }}"
                             alt="{{ $book->title }}" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="card-text fs-5 fw-bold mb-5">{{ $book->title }}</h3>
