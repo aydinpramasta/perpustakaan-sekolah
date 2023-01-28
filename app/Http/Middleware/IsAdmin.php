@@ -17,7 +17,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        abort_if(!in_array(auth()->user()->role, [User::ROLES['Admin'], User::ROLES['Pustakawan']]), 404);
+        abort_if(!in_array(auth()->user()->role, [User::ROLES['Admin'], User::ROLES['Librarian']]), 404);
 
         return $next($request);
     }
