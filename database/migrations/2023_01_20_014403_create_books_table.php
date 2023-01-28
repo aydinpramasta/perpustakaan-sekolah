@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('publisher');
             $table->string('writer');
             $table->integer('publish_year');
-            $table->string('cover');
+            $table->string('cover')->nullable();
             $table->string('category');
             $table->integer('amount');
             $table->string('status', 100);
