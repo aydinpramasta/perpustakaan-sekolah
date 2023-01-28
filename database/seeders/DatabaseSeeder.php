@@ -51,16 +51,19 @@ class DatabaseSeeder extends Seeder
                 'gender' => User::GENDERS['Woman'],
             ]);
 
-            $books = Book::factory(6)->create();
+            $books = Book::factory(10)->create();
 
             $borrowCount = 10;
+            $confirmation = true;
             foreach ($books as $book) {
                 Borrow::factory($borrowCount)->create([
+                    'confirmation' => $confirmation,
                     'book_id' => $book->id,
                     'user_id' => $member->id,
                 ]);
 
                 $borrowCount--;
+                $confirmation = !$confirmation;
             }
         }
     }
