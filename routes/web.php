@@ -20,7 +20,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::prefix('/admin')->name('admin.')->group(function () {
+    Route::middleware('is-admin')->prefix('/admin')->name('admin.')->group(function () {
         Route::view('dashboard', 'admin.dashboard')->name('dashboard');
     });
 });
