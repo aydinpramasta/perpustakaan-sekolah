@@ -19,6 +19,7 @@ class SearchController extends Controller
                 ->orWhere('publish_year', 'LIKE', "%{$request->search}%")
                 ->orWhere('category', 'LIKE', "%{$request->search}%")
                 ->orWhere('status', 'LIKE', "%{$request->search}%")
+                ->latest('id')
                 ->paginate(12);
         }
 
