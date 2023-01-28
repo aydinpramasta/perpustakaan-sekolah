@@ -1,11 +1,13 @@
 <div class="fixed-top">
-    @if (in_array(auth()->user()->role, [\App\Models\User::ROLES['Admin'], \App\Models\User::ROLES['Librarian']]))
-        <div class="navbar px-5 bg-primary-subtle flex justify-content-between">
-            <span>Anda adalah <b>{{ auth()->user()->role }}</b></span>
+    @auth
+        @if (in_array(auth()->user()->role, [\App\Models\User::ROLES['Admin'], \App\Models\User::ROLES['Librarian']]))
+            <div class="navbar px-5 bg-primary-subtle flex justify-content-between">
+                <span>Anda adalah <b>{{ auth()->user()->role }}</b></span>
 
-            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Ke Dashboard</a>
-        </div>
-    @endif
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Ke Dashboard</a>
+            </div>
+        @endif
+    @endauth
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary px-3">
         <div class="container-fluid">
