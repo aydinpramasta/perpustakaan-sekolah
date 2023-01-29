@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('duration');
             $table->integer('amount');
             $table->boolean('confirmation');
-            $table->foreignId('book_id')->constrained('books');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
         });
     }
 

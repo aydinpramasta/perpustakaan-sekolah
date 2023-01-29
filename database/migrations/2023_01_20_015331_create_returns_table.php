@@ -19,9 +19,9 @@ return new class extends Migration
             $table->bigInteger('fine');
             $table->string('status', 100);
             $table->boolean('confirmation');
-            $table->foreignId('book_id')->constrained('books');
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('borrow_id')->constrained('borrows');
+            $table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('borrow_id')->constrained('borrows')->cascadeOnDelete();
         });
     }
 
