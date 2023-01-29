@@ -10,8 +10,8 @@ class Book extends Model
     use HasFactory;
 
     public const STATUSES = [
-        'Tersedia',
-        'Dipinjam',
+        'Available' => 'Available',
+        'Borrowed' => 'Borrowed',
     ];
 
     protected $fillable = [

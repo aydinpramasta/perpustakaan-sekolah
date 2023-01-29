@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,7 +26,7 @@ class BookFactory extends Factory
             'cover' => null,
             'category' => 'Random',
             'amount' => 5,
-            'status' => 'Tersedia',
+            'status' => Book::STATUSES['Available'],
         ];
     }
 }

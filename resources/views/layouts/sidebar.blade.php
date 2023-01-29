@@ -31,10 +31,16 @@
                 <i class="fas fa-fw fa-user"></i>
                 <span>Member</span></a>
         </li>
+
+        <li class="nav-item {{ request()->routeIs('admin.books.*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.books.index') }}">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Buku</span></a>
+        </li>
     @endif
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="mt-auto text-center d-none d-md-inline">
+    <div class="mt-5 text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
