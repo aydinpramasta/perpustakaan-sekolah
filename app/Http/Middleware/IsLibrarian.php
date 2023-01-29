@@ -6,7 +6,7 @@ use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsAdmin
+class IsLibrarian
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        abort_if(auth()->user()->role !== User::ROLES['Admin'], 404);
+        abort_if(auth()->user()->role !== User::ROLES['Librarian'], 404);
 
         return $next($request);
     }

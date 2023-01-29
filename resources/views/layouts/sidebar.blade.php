@@ -8,7 +8,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -16,7 +15,15 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <hr class="sidebar-divider my-0">
+
+    @if (auth()->user()->role === \App\Models\User::ROLES['Admin'])
+        <li class="nav-item {{ request()->routeIs('admin.librarians.*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.librarians.index') }}">
+                <i class="fas fa-fw fa-book-open"></i>
+                <span>Pustakawan</span></a>
+        </li>
+    @endif
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="mt-auto text-center d-none d-md-inline">

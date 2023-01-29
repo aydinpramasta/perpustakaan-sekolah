@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LibrarianController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
@@ -20,7 +21,11 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::middleware('is-admin')->prefix('/admin')->name('admin.')->group(function () {
-        Route::view('dashboard', 'admin.dashboard')->name('dashboard');
+    Route::middleware('superuser')->prefix('/admin')->name('admin.')->group(function () {
+        Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+
+        Route::middleware('admin')->group(function () {
+            Route::resource('/librarians', LibrarianController::class)->except('show');
+        });
     });
 });
