@@ -1,5 +1,5 @@
 <x-guest-layout title="Login">
-    <h1 class="fw-bold">Perpustakaan</h1>
+    <a href="{{ route('home') }}" class="fw-bold fs-1 text-decoration-none text-black">Perpustakaan</a>
     <h3>Login</h3>
 
     <form action="{{ route('login') }}" method="POST"

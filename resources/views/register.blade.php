@@ -1,5 +1,5 @@
 <x-guest-layout title="Register">
-    <h1 class="fw-bold">Perpustakaan</h1>
+    <a href="{{ route('home') }}" class="fw-bold fs-1 text-decoration-none text-black">Perpustakaan</a>
     <h3>Register</h3>
 
     <form action="{{ route('register') }}" method="POST"
@@ -50,7 +50,8 @@
 
             <div class="input-group">
                 <span class="input-group-text">+</span>
-                <input type="number" name="telephone" class="form-control" id="telephone" value="{{ old('telephone') }}" />
+                <input type="number" name="telephone" class="form-control" id="telephone"
+                    value="{{ old('telephone') }}" />
             </div>
 
             @error('telephone')
@@ -64,14 +65,16 @@
             <div class="d-flex justify-content-center">
                 <div class="form-check form-check-inline">
                     <label class="form-check-label">
-                        <input @checked(old('gender' === 'Man')) class="form-check-input" type="radio" name="gender" value="Man" />
+                        <input @checked(old('gender' === 'Man')) class="form-check-input" type="radio" name="gender"
+                            value="Man" />
                         Laki-laki
                     </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                     <label class="form-check-label">
-                        <input @checked(old('gender' === 'Woman')) class="form-check-input" type="radio" name="gender" value="Woman" />
+                        <input @checked(old('gender' === 'Woman')) class="form-check-input" type="radio" name="gender"
+                            value="Woman" />
                         Perempuan
                     </label>
                 </div>
