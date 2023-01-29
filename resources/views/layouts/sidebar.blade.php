@@ -25,6 +25,14 @@
         </li>
     @endif
 
+    @if (auth()->user()->role === \App\Models\User::ROLES['Librarian'])
+        <li class="nav-item {{ request()->routeIs('admin.members.*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.members.index') }}">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Member</span></a>
+        </li>
+    @endif
+
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="mt-auto text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\LibrarianController;
+use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
@@ -26,6 +27,10 @@ Route::middleware('auth')->group(function () {
 
         Route::middleware('admin')->group(function () {
             Route::resource('/librarians', LibrarianController::class)->except('show');
+        });
+
+        Route::middleware('librarian')->group(function () {
+            Route::resource('/members', MemberController::class)->except('show');
         });
     });
 });
