@@ -1,4 +1,4 @@
-<x-admin-layout title="Tambah Pustakawan">
+<x-admin-layout title="Edit Pustakawan">
     <div class="card shadow mb-4">
         <div class="card-body">
             <form class="row" action="{{ route('admin.librarians.update', $librarian) }}" method="POST" onsubmit="return confirm('Anda yakin ingin mengedit pustakawan ini?')">

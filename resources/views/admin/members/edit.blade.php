@@ -1,4 +1,4 @@
-<x-admin-layout title="Tambah Member">
+<x-admin-layout title="Edit Member">
     <div class="card shadow mb-4">
         <div class="card-body">
             <form class="row" action="{{ route('admin.members.update', $member) }}" method="POST" onsubmit="return confirm('Anda yakin ingin mengedit member ini?')">
