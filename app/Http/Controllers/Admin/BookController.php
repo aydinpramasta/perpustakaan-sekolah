@@ -25,7 +25,7 @@ class BookController extends Controller
             });
         });
 
-        $books = $books->latest()->paginate(10);
+        $books = $books->latest('id')->paginate(10);
 
         return view('admin.books.index')->with([
             'books' => $books,
@@ -98,7 +98,9 @@ class BookController extends Controller
 
     public function destroy(Book $book)
     {
-        Storage::disk('public')->delete($book->cover);
+        if (isset($book->cover)) {
+            Storage::disk('public')->delete($book->cover);
+        }
         
         $book->delete();
 
