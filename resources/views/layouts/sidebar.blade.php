@@ -37,6 +37,12 @@
                 <i class="fas fa-fw fa-book"></i>
                 <span>Buku</span></a>
         </li>
+
+        <li class="nav-item {{ request()->routeIs('admin.borrows.*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.borrows.index') }}">
+                <i class="fas fa-fw fa-copy"></i>
+                <span>Peminjaman</span></a>
+        </li>
     @endif
 
     <!-- Sidebar Toggler (Sidebar) -->

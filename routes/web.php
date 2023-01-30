@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\Admin\BorrowController;
 use App\Http\Controllers\Admin\LibrarianController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\AuthController;
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function () {
             Route::resource('/members', MemberController::class)->except('show');
 
             Route::resource('/books', BookController::class)->except('show');
+
+            Route::resource('/borrows', BorrowController::class)->except('show', 'create', 'store');
         });
     });
 });
