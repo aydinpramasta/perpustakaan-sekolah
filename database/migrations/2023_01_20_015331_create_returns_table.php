@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->dateTime('returned_at');
             $table->bigInteger('fine');
-            $table->string('status', 100);
+            $table->string('status', 100)->nullable();
             $table->boolean('confirmation');
             $table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();

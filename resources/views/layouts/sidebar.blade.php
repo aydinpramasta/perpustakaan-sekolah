@@ -43,6 +43,12 @@
                 <i class="fas fa-fw fa-copy"></i>
                 <span>Peminjaman</span></a>
         </li>
+
+        <li class="nav-item {{ request()->routeIs('admin.returns.*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.returns.index') }}">
+                <i class="fas fa-fw fa-paste"></i>
+                <span>Pengembalian</span></a>
+        </li>
     @endif
 
     <!-- Sidebar Toggler (Sidebar) -->

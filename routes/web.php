@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\BorrowController;
 use App\Http\Controllers\Admin\LibrarianController;
 use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\RestoreController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
@@ -37,6 +38,8 @@ Route::middleware('auth')->group(function () {
             Route::resource('/books', BookController::class)->except('show');
 
             Route::resource('/borrows', BorrowController::class)->except('show', 'create', 'store');
+
+            Route::resource('/returns', RestoreController::class)->except('show', 'create', 'store');
         });
     });
 });
