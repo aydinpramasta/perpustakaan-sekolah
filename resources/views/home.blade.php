@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
                 @foreach ($popularBooks as $popularBook)
-                    <a href="#" class="col text-dark text-decoration-none">
+                    <a href="{{ route('preview', $popularBook) }}" class="col text-dark text-decoration-none">
                         <div class="card">
                             <img src="{{ isset($popularBook->cover) ? asset('storage/' . $popularBook->cover) : asset('storage/placeholder.png') }}"
                                 alt="{{ $popularBook->title }}" class="card-img-top">
@@ -45,7 +45,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
                 @foreach ($newestBooks as $newestBook)
-                    <a href="#" class="col text-dark text-decoration-none">
+                    <a href="{{ route('preview', $newestBook) }}" class="col text-dark text-decoration-none">
                         <div class="card">
                             <img src="{{ isset($newestBook->cover) ? asset('storage/' . $newestBook->cover) : asset('storage/placeholder.png') }}"
                                 alt="{{ $newestBook->title }}" class="card-img-top">
