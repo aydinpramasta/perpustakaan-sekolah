@@ -72,6 +72,14 @@ class DatabaseSeeder extends Seeder
                     'borrow_id' => $borrows->first()->id,
                 ]);
 
+                Restore::factory()->create([
+                    'confirmation' => false,
+                    'status' => Restore::STATUSES['Not confirmed'],
+                    'book_id' => $bookId,
+                    'user_id' => $member->id,
+                    'borrow_id' => $borrows->first()->id,
+                ]);
+
                 Borrow::factory()->create([
                     'book_id' => $bookId,
                     'user_id' => $member->id,
