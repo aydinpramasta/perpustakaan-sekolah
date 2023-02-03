@@ -13,7 +13,7 @@ class User extends Authenticatable
 
     public const ROLES = [
         'Admin' => 'Admin',
-        'Librarian' => 'Librarian',
+        'Librarian' => 'Pustakawan',
         'Member' => 'Member',
     ];
 
@@ -24,8 +24,8 @@ class User extends Authenticatable
     ];
 
     public const GENDERS = [
-        'Man' => 'Man',
-        'Woman' => 'Woman',
+        'Man' => 'Laki-laki',
+        'Woman' => 'Perempuan',
     ];
 
     protected $fillable = [
