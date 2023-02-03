@@ -44,6 +44,9 @@ class BorrowController extends Controller
             'confirmation' => ['required', 'boolean'],
         ]);
 
+        $book = $borrow->book;
+        $book->update(['amount' => --$book->amount]);
+
         $borrow->update($confirmation);
 
         return redirect()

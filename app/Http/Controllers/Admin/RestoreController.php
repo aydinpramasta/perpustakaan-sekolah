@@ -48,6 +48,9 @@ class RestoreController extends Controller
             'confirmation' => ['required', 'boolean'],
         ]);
 
+        $book = $restore->book;
+        $book->update(['amount' => ++$book->amount]);
+
         $restore->update($confirmation);
 
         return redirect()
