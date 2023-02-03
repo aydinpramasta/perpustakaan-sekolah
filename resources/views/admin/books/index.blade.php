@@ -21,6 +21,7 @@
                             <th>Penulis</th>
                             <th>Penerbit</th>
                             <th>Tahun Terbit</th>
+                            <th>Jumlah Tersedia</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
@@ -37,6 +38,7 @@
                                 <td>{{ $book->writer }}</td>
                                 <td>{{ $book->publisher }}</td>
                                 <td>{{ $book->publish_year }}</td>
+                                <td>{{ $book->amount }} buku</td>
                                 <td>
                                     @switch($book->status)
                                         @case(\App\Models\Book::STATUSES['Available'])
