@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Book;
 use App\Models\Borrow;
+use App\Models\Restore;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -51,19 +52,31 @@ class DatabaseSeeder extends Seeder
                 'gender' => User::GENDERS['Woman'],
             ]);
 
-            $books = Book::factory(10)->create();
+            $bookIds = Book::factory(6)->create()->pluck('id');
 
-            $borrowCount = 10;
-            $confirmation = true;
-            foreach ($books as $book) {
-                Borrow::factory($borrowCount)->create([
-                    'confirmation' => $confirmation,
-                    'book_id' => $book->id,
+            $borrowCount = count($bookIds);
+            foreach ($bookIds as $bookId) {
+                $borrows = Borrow::factory($borrowCount)->create([
+                    'book_id' => $bookId,
                     'user_id' => $member->id,
+                    'confirmation' => true,
                 ]);
 
                 $borrowCount--;
-                $confirmation = !$confirmation;
+
+                Restore::factory()->create([
+                    'confirmation' => true,
+                    'status' => Restore::STATUSES['Returned'],
+                    'book_id' => $bookId,
+                    'user_id' => $member->id,
+                    'borrow_id' => $borrows->first()->id,
+                ]);
+
+                Borrow::factory()->create([
+                    'book_id' => $bookId,
+                    'user_id' => $member->id,
+                    'confirmation' => false,
+                ]);
             }
         }
     }

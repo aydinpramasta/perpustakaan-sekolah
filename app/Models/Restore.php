@@ -13,6 +13,11 @@ class Restore extends Model
     
     public $timestamps = false;
 
+    public const STATUSES = [
+        'Returned' => 'Telah dikembalikan',
+        'Not confirmed' => 'Belum dikonfirmasi',
+    ];
+
     protected $fillable = [
         'returned_at',
         'fine',
