@@ -16,7 +16,6 @@
                             <th>Buku</th>
                             <th>Peminjam</th>
                             <th>Tanggal Pengembalian</th>
-                            <th>Denda</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
@@ -31,15 +30,22 @@
                                 </td>
                                 <td>{{ $restore->user->name }}</td>
                                 <td>{{ $restore->returned_at->locale('id_ID')->isoFormat('LL') }}</td>
-                                <td>{{ $restore->fine }}</td>
                                 <td>
-                                    @switch($restore->confirmation)
-                                        @case(true)
-                                            <span class="badge badge-success">Terkonfirmasi</span>
+                                    @switch($restore->status)
+                                        @case(\App\Models\Restore::STATUSES['Returned'])
+                                            <span class="badge badge-success">{{ $restore->status }}</span>    
+                                        @break
+                                    
+                                        @case(\App\Models\Restore::STATUSES['Not confirmed'])
+                                            <span class="badge badge-warning">{{ $restore->status }}</span>
                                         @break
 
-                                        @case(false)
-                                            <span class="badge badge-warning">Menunggu konfirmasi</span>
+                                        @case(\App\Models\Restore::STATUSES['Past due'])
+                                            <span class="badge badge-danger">{{ $restore->status }}</span>
+                                        @break
+
+                                        @case(\App\Models\Restore::STATUSES['Fine not paid'])
+                                            <span class="badge badge-dark">{{ $restore->status }}</span>
                                         @break
                                     @endswitch
                                 </td>

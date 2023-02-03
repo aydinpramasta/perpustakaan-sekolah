@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Restore;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class RestoreController extends Controller
 {
@@ -44,14 +45,21 @@ class RestoreController extends Controller
     {
         $restore = Restore::query()->findOrFail($id);
 
-        $confirmation = $request->validate([
+        $data = $request->validate([
             'confirmation' => ['required', 'boolean'],
+            'fine' => [Rule::when($restore->returned_at > $restore->borrow->borrowed_at->addDays($restore->borrow->duration) && is_null($restore->fine), ['required', 'numeric'])],
         ]);
 
-        $book = $restore->book;
-        $book->update(['amount' => ++$book->amount]);
+        if ($data['confirmation']) {
+            $book = $restore->book;
+            $book->update(['amount' => ++$book->amount]);
 
-        $restore->update($confirmation);
+            $data['status'] = Restore::STATUSES['Returned'];
+        } else if (isset($data['fine'])) {
+            $data['status'] = Restore::STATUSES['Fine not paid'];
+        }
+
+        $restore->update($data);
 
         return redirect()
             ->route('admin.returns.index')

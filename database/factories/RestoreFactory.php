@@ -18,7 +18,7 @@ class RestoreFactory extends Factory
     {
         return [
             'returned_at' => now(),
-            'fine' => 0,
+            'fine' => null,
         ];
     }
 }

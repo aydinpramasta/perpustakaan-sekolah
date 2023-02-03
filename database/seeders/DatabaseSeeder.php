@@ -62,29 +62,50 @@ class DatabaseSeeder extends Seeder
                     'confirmation' => true,
                 ]);
 
-                $borrowCount--;
+                if ($borrowCount >= 4) {
+                    Restore::factory()->create([
+                        'returned_at' => now()->addDays($borrows[0]->duration + 1),
+                        'fine' => 10000,
+                        'confirmation' => false,
+                        'status' => Restore::STATUSES['Fine not paid'],
+                        'book_id' => $bookId,
+                        'user_id' => $member->id,
+                        'borrow_id' => $borrows[0]->id,
+                    ]);
 
-                Restore::factory()->create([
-                    'confirmation' => true,
-                    'status' => Restore::STATUSES['Returned'],
-                    'book_id' => $bookId,
-                    'user_id' => $member->id,
-                    'borrow_id' => $borrows->first()->id,
-                ]);
+                    Restore::factory()->create([
+                        'confirmation' => true,
+                        'status' => Restore::STATUSES['Returned'],
+                        'book_id' => $bookId,
+                        'user_id' => $member->id,
+                        'borrow_id' => $borrows[1]->id,
+                    ]);
 
-                Restore::factory()->create([
-                    'confirmation' => false,
-                    'status' => Restore::STATUSES['Not confirmed'],
-                    'book_id' => $bookId,
-                    'user_id' => $member->id,
-                    'borrow_id' => $borrows->first()->id,
-                ]);
+                    Restore::factory()->create([
+                        'returned_at' => now()->addDays($borrows[0]->duration + 1),
+                        'confirmation' => false,
+                        'status' => Restore::STATUSES['Past due'],
+                        'book_id' => $bookId,
+                        'user_id' => $member->id,
+                        'borrow_id' => $borrows[2]->id,
+                    ]);
+
+                    Restore::factory()->create([
+                        'confirmation' => false,
+                        'status' => Restore::STATUSES['Not confirmed'],
+                        'book_id' => $bookId,
+                        'user_id' => $member->id,
+                        'borrow_id' => $borrows[3]->id,
+                    ]);
+                }
 
                 Borrow::factory()->create([
                     'book_id' => $bookId,
                     'user_id' => $member->id,
                     'confirmation' => false,
                 ]);
+
+                $borrowCount--;
             }
         }
     }

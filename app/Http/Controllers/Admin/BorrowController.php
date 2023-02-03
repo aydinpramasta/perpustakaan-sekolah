@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Borrow;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class BorrowController extends Controller
 {
@@ -40,14 +41,16 @@ class BorrowController extends Controller
 
     public function update(Request $request, Borrow $borrow)
     {
-        $confirmation = $request->validate([
-            'confirmation' => ['required', 'boolean'],
+        $data = $request->validate([
+            'confirmation' => ['required', Rule::in([1])],
         ]);
 
-        $book = $borrow->book;
-        $book->update(['amount' => --$book->amount]);
+        if (!$borrow->confirmation) {
+            $book = $borrow->book;
+            $book->update(['amount' => --$book->amount]);
+        }
 
-        $borrow->update($confirmation);
+        $borrow->update($data);
 
         return redirect()
             ->route('admin.borrows.index')

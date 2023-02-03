@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('returns', function (Blueprint $table) {
             $table->id();
             $table->dateTime('returned_at');
-            $table->bigInteger('fine');
-            $table->string('status', 100)->nullable();
+            $table->bigInteger('fine')->nullable();
+            $table->string('status', 100);
             $table->boolean('confirmation');
             $table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('borrow_id')->constrained('borrows')->cascadeOnDelete();
+            $table->foreignId('borrow_id')->unique()->constrained('borrows')->cascadeOnDelete();
         });
     }
 

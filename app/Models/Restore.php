@@ -16,6 +16,8 @@ class Restore extends Model
     public const STATUSES = [
         'Returned' => 'Telah dikembalikan',
         'Not confirmed' => 'Belum dikonfirmasi',
+        'Past due' => 'Terlambat',
+        'Fine not paid' => 'Belum membayar denda',
     ];
 
     protected $fillable = [
@@ -38,5 +40,9 @@ class Restore extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function borrow() {
+        return $this->belongsTo(Borrow::class);
     }
 }

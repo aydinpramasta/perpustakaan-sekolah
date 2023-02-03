@@ -7,19 +7,14 @@
                 @method('PUT')
 
                 <div class="d-flex w-100 mt-3 justify-content-end">
+                    @if ($borrow->confirmation)
+                        <span class="text-success my-auto mr-3">Peminjaman ini telah terkonfirmasi.</span>
+                    @else
+                        <input type="hidden" name="confirmation" value="1">
+                        <button type="submit" class="btn btn-success mx-3">Konfirmasi</button>
+                    @endif
+
                     <a href="{{ route('admin.borrows.index') }}" class="btn btn-warning mx-3">Kembali</a>
-
-                    @switch($borrow->confirmation)
-                        @case(true)
-                            <input type="hidden" name="confirmation" value="0">
-                            <button type="submit" class="btn btn-danger mx-3">Batal Konfirmasi</button>
-                        @break
-
-                        @case(false)
-                            <input type="hidden" name="confirmation" value="1">
-                            <button type="submit" class="btn btn-success mx-3">Konfirmasi</button>
-                        @break
-                    @endswitch
 
                     @error('confirmation')
                         <span class="text-danger">{{ $message }}</span>
