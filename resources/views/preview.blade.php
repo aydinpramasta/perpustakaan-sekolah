@@ -24,7 +24,9 @@
                 </div>
 
                 @if ($book->amount > 0)
-                    <form action="#">
+                    <form action="{{ route('my-books.store') }}" method="POST">
+                        @csrf
+                        @method('POST')
                         <button type="submit" class="btn btn-primary btn-lg d-block mx-auto px-5 my-5">Pinjam
                             Buku</button>
                     </form>

@@ -19,6 +19,8 @@
             <div class="collapse navbar-collapse" id="navbarItems">
                 <div class="navbar-nav ms-auto">
                     @auth
+                        <a class="nav-link {{ request()->routeIs('my-books.*') ? 'active' : '' }}" href="{{ route("my-books.index") }}">Buku-ku</a>
+
                         <form action="{{ route('logout') }}" method="POST"
                             onsubmit="return confirm('Anda yakin ingin keluar?')">
                             @csrf

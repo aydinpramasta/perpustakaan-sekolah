@@ -43,4 +43,8 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function borrows() {
+        return $this->hasMany(Borrow::class);
+    }
 }

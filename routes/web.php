@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\RestoreController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MyBookController;
 use App\Http\Controllers\PreviewController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,8 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::resource('/my-books', MyBookController::class)->only('index', 'store', 'update');
 
     Route::middleware('superuser')->prefix('/admin')->name('admin.')->group(function () {
         Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
