@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 
 Route::get('/search', SearchController::class)->name('search');
+Route::get('/preview/{book}', PreviewController::class)->name('preview');
 
 Route::middleware('guest')->group(function () {
     Route::view('/register', 'register')->name('register');
@@ -25,8 +26,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
-
-    Route::get('/preview/{book}', PreviewController::class)->name('preview');
 
     Route::middleware('superuser')->prefix('/admin')->name('admin.')->group(function () {
         Route::view('/dashboard', 'admin.dashboard')->name('dashboard');

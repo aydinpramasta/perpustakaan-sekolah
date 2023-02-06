@@ -23,9 +23,14 @@
                     {!! $book->synopsis !!}
                 </div>
 
-                <form action="#">
-                    <button type="submit" class="btn btn-primary btn-lg d-block mx-auto px-5 my-5">Pinjam Buku</button>
-                </form>
+                @if ($book->amount > 0)
+                    <form action="#">
+                        <button type="submit" class="btn btn-primary btn-lg d-block mx-auto px-5 my-5">Pinjam
+                            Buku</button>
+                    </form>
+                @else
+                    <button type="button" class="btn btn-outline-secondary btn-lg d-block mx-auto px-5 my-5" disabled>Buku tidak tersedia</button>
+                @endif
             </div>
         </div>
     </section>
