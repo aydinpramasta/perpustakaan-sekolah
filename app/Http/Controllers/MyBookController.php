@@ -38,7 +38,22 @@ class MyBookController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'book_id' => ['required', 'numeric'],
+            'duration' => ['required', 'numeric'],
+            'amount' => ['required', 'numeric'],
+        ]);
+
+        Borrow::create([
+            'borrowed_at' => now(),
+            'duration' => $request->duration,
+            'amount' => $request->amount,
+            'confirmation' => false,
+            'book_id' => $request->book_id,
+            'user_id' => auth()->id(),
+        ]);
+
+        return redirect()->route('my-books.index')->with('success', 'Berhasil mengajukan peminjaman!');
     }
 
     public function update($id)
@@ -46,7 +61,7 @@ class MyBookController extends Controller
         $borrow = Borrow::query()->findOrFail($id);
 
         if ($borrow->confirmation || isset($borrow->restore)) {
-            return redirect()->route('my-books.index')->withErrors('Peminjaman ini tidak sesuai!');
+            return back()->withErrors('Peminjaman ini tidak sesuai!');
         }
 
         $returnStatus = $borrow->borrowed_at->addDays($borrow->duration) > now() ? Restore::STATUSES['Not confirmed'] : Restore::STATUSES['Past due'];

@@ -27,11 +27,15 @@
                     <form action="{{ route('my-books.store') }}" method="POST">
                         @csrf
                         @method('POST')
+                        <input type="hidden" name="book_id" value="{{ $book->id }}">
+                        <input type="hidden" name="duration" value="3">
+                        <input type="hidden" name="amount" value="1">
                         <button type="submit" class="btn btn-primary btn-lg d-block mx-auto px-5 my-5">Pinjam
                             Buku</button>
                     </form>
                 @else
-                    <button type="button" class="btn btn-outline-secondary btn-lg d-block mx-auto px-5 my-5" disabled>Buku tidak tersedia</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg d-block mx-auto px-5 my-5"
+                        disabled>Buku tidak tersedia</button>
                 @endif
             </div>
         </div>
