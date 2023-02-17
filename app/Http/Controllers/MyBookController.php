@@ -60,7 +60,7 @@ class MyBookController extends Controller
     {
         $borrow = Borrow::query()->findOrFail($id);
 
-        if ($borrow->confirmation || isset($borrow->restore)) {
+        if (!$borrow->confirmation || isset($borrow->restore)) {
             return back()->withErrors('Peminjaman ini tidak sesuai!');
         }
 
