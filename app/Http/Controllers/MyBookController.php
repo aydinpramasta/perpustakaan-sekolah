@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Borrow;
 use App\Models\Restore;
 use Illuminate\Database\Eloquent\Builder;
@@ -38,10 +39,16 @@ class MyBookController extends Controller
 
     public function store(Request $request)
     {
+        $book = Book::find($request->book_id);
+
+        if (!$book) {
+            return back();
+        }
+
         $request->validate([
             'book_id' => ['required', 'numeric'],
             'duration' => ['required', 'numeric'],
-            'amount' => ['required', 'numeric'],
+            'amount' => ['required', 'numeric', 'max:' . $book->amount],
         ]);
 
         Borrow::create([
