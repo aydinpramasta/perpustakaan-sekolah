@@ -51,8 +51,7 @@ class RestoreController extends Controller
         ]);
 
         if ($data['confirmation']) {
-            $book = $restore->book;
-            $book->update(['amount' => ++$book->amount]);
+            $restore->book()->increment('amount', $restore->borrow->amount);
 
             $data['status'] = Restore::STATUSES['Returned'];
         } else if (isset($data['fine'])) {

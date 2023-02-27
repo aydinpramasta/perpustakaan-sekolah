@@ -45,9 +45,9 @@ class BorrowController extends Controller
             'confirmation' => ['required', Rule::in([1])],
         ]);
 
+        // jika peminjaman belum terkonfirmasi kemudian saat ini dikonfirmasi
         if (!$borrow->confirmation) {
-            $book = $borrow->book;
-            $book->update(['amount' => --$book->amount]);
+            $borrow->book()->decrement('amount', $borrow->amount);
         }
 
         $borrow->update($data);

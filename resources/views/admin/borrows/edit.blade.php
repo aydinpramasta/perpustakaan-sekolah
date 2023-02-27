@@ -33,10 +33,16 @@
                     <h5 class="text-center">{{ $borrow->book->title }}</h5>
                 </div>
 
-                <div class="col-12 mb-3">
+                <div class="col-12 col-md-6 mb-3">
                     <label for="name" class="form-label">Peminjam</label>
                     <input type="text" name="name" class="form-control" id="name"
                         value="{{ $borrow->user->name }}" disabled>
+                </div>
+
+                <div class="col-12 col-md-6 mb-3">
+                    <label for="name" class="form-label">Jumlah Pinjam</label>
+                    <input type="text" name="amount" class="form-control" id="amount"
+                        value="{{ $borrow->amount . ' buku' }}" disabled>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">

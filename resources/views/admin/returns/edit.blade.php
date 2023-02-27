@@ -17,13 +17,19 @@
                     <h5 class="text-center">{{ $restore->book->title }}</h5>
                 </div>
 
-                <div class="col-12 col-md-6 mb-3">
+                <div class="col-12 col-md-4 mb-3">
                     <label for="name" class="form-label">Peminjam</label>
                     <input type="text" name="name" class="form-control" id="name"
                         value="{{ $restore->user->name }}" disabled>
                 </div>
 
-                <div class="col-12 col-md-6 mb-3">
+                <div class="col-12 col-md-4 mb-3">
+                    <label for="name" class="form-label">Jumlah Pinjam</label>
+                    <input type="text" name="amount" class="form-control" id="amount"
+                        value="{{ $restore->borrow->amount . ' hari' }}" disabled>
+                </div>
+
+                <div class="col-12 col-md-4 mb-3">
                     <label for="returned_at" class="form-label">Tanggal Pengembalian</label>
                     <input type="text" name="returned_at" class="form-control" id="returned_at"
                         value="{{ $restore->returned_at->locale('id_ID')->isoFormat('LL') }}" disabled>

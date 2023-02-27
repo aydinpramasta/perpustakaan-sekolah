@@ -39,11 +39,7 @@ class MyBookController extends Controller
 
     public function store(Request $request)
     {
-        $book = Book::find($request->book_id);
-
-        if (!$book) {
-            return back();
-        }
+        $book = Book::findOrFail($request->book_id);
 
         $request->validate([
             'book_id' => ['required', 'numeric'],
