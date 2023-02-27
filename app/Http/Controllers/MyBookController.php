@@ -37,12 +37,9 @@ class MyBookController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Book $book)
     {
-        $book = Book::findOrFail($request->book_id);
-
         $request->validate([
-            'book_id' => ['required', 'numeric'],
             'duration' => ['required', 'numeric'],
             'amount' => ['required', 'numeric', 'max:' . $book->amount],
         ]);
@@ -52,7 +49,7 @@ class MyBookController extends Controller
             'duration' => $request->duration,
             'amount' => $request->amount,
             'confirmation' => false,
-            'book_id' => $request->book_id,
+            'book_id' => $book->id,
             'user_id' => auth()->id(),
         ]);
 

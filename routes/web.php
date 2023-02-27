@@ -28,7 +28,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::resource('/my-books', MyBookController::class)->only('index', 'store', 'update');
+    Route::resource('/my-books', MyBookController::class)->only('index', 'update');
+    Route::post('/my-books/{book}', [MyBookController::class, 'store'])->name('my-books.store');
 
     Route::middleware('superuser')->prefix('/admin')->name('admin.')->group(function () {
         Route::view('/dashboard', 'admin.dashboard')->name('dashboard');

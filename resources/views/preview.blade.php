@@ -28,10 +28,10 @@
                 </div>
 
                 @if (auth()->check())
-                    <form class="my-5" action="{{ route('my-books.store') }}" method="POST">
+                    <form class="my-5" action="{{ route('my-books.store', $book) }}" method="POST">
                         @csrf
                         @method('POST')
-                        <input type="hidden" name="book_id" value="{{ $book->id }}">
+                        
                         <div class="row row-cols-1 row-cols-lg-2 mb-3">
                             <div>
                                 <label for="duration">Durasi</label>
