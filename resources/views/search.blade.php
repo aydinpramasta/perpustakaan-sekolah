@@ -19,7 +19,7 @@
     <section class="container pb-5">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
             @forelse ($books as $book)
-                <a href="#" class="col text-dark text-decoration-none">
+                <a href="{{ route('preview', $book) }}" class="col text-dark text-decoration-none">
                     <div class="card">
                         <img src="{{ isset($book->cover) ? asset('storage/' . $book->cover) : asset('storage/placeholder.png') }}"
                             alt="{{ $book->title }}" class="card-img-top">
