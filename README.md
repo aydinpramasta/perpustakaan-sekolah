@@ -2,12 +2,12 @@
 
 ## Tech Stack
 
-- **[Laravel 9](https://laravel.com/)**
+- **[Laravel 10](https://laravel.com/)**
 - **[Bootstrap 5.3](https://getbootstrap.com)**
 
 ## Prerequisites
-- PHP 8
-- Composer
+- PHP ^8.1
+- Composer ^2.2.0
 - NPM
 
 ## Setup Guide
