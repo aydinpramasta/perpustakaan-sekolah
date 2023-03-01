@@ -7,6 +7,7 @@
 
 ## Prerequisites
 - PHP 8
+- Composer
 - NPM
 
 ## Setup Guide
