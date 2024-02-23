@@ -10,7 +10,7 @@
 </head>
 
 <body
-    class="d-flex flex-column justify-content-center align-items-center text-center min-vh-100 py-5 bg-secondary-subtle">
+    class="d-flex flex-column justify-content-center align-items-center text-center min-vh-100 py-5 bg-light">
     {{ $slot }}
 </body>
 
